@@ -1,0 +1,33 @@
+#include<stdio.h>
+#include<stdlib.h>
+struct contact{
+    long int number;
+    struct contact *next;//nested structure
+};
+int main(){
+    //storage allocation
+    struct contact *pr1=(struct contact*) malloc(sizeof(struct contact));
+    struct contact *pr2=(struct contact*) malloc(sizeof(struct contact));
+    struct contact *pr3=(struct contact*) malloc(sizeof(struct contact));
+    //storing numbers
+    pr1->number = 9988776655;
+    pr2->number = 9888776655;
+    pr3->number = 9988876655;
+    //interconnection
+    pr1->next = pr2;
+    pr2->next = pr3;
+    pr3->next = pr1;
+    //POINTING head
+    struct contact *head =pr1;
+    struct contact *temp =head;                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                        
+    //display
+    printf("Contact: \n");
+    do{                                                                                                                                                                                                                                                                            
+    printf("%ld --->", temp->number);
+    temp = temp->next;
+}
+while(temp!=head);
+printf("return to head");
+
+    return 0;
+}
